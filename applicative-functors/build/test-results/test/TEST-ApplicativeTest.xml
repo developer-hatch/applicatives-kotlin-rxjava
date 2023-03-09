@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ApplicativeTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-03-09T18:43:13" hostname="damian-laptop" time="0.075">
+  <properties/>
+  <testcase name="testMixBoth()" classname="ApplicativeTest" time="0.075"/>
+  <system-out><![CDATA[Parallel subscribe v8 on RxCachedThreadScheduler-1
+Parallel subscribe v11 on RxCachedThreadScheduler-3
+Parallel subscribe v9 on RxCachedThreadScheduler-2
+Parallel subscribe v7 on RxCachedThreadScheduler-3
+Parallel subscribe v6 on RxCachedThreadScheduler-2
+Parallel subscribe v5 on RxCachedThreadScheduler-1
+Parallel subscribe v1 on RxCachedThreadScheduler-2
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
