@@ -35,13 +35,13 @@ infix fun <A, B : Any> Single<(A?) -> (B)>.zipOverNullable(applicativeValue: Sin
  * Each application will be executed on <b>the same thread</b> if and only if the Single is not subscribed on a specific scheduler
  */
 infix fun <A, B> Single<(A) -> (B)>.mapOver(applicativeValue: Single<A>): Single<B> =
-    applicativeValue.flatMap { value -> this.map { applicativeFunction -> applicativeFunction(value) } }
+    this.flatMap { applicativeFunction -> applicativeValue.map { value -> applicativeFunction(value) } }
 
 /**
  * Each application will be executed on <b>the same thread</b> if and only if the Single is not subscribed on a specific scheduler
  */
 infix fun <A, B> Single<(A?) -> (B)>.mapOverNullable(applicativeValue: Single<A>?): Single<B> =
     when {
-        applicativeValue != null -> applicativeValue.flatMap { value -> this.map { applicativeFunction -> applicativeFunction(value) } }
+        applicativeValue != null -> this.flatMap { applicativeFunction -> applicativeValue.map { value -> applicativeFunction(value) } }
         else -> this.map { it(null) }
     }
