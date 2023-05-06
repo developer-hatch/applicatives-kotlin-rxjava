@@ -1,6 +1,5 @@
 import io.reactivex.Observable
 import io.reactivex.Single
-import io.reactivex.schedulers.Schedulers
 import io.reactivex.schedulers.Schedulers.io
 import org.funktionale.currying.curried
 import org.junit.jupiter.api.Test
@@ -15,22 +14,24 @@ class ApplicativeTest {
         val bothSubscribed = CountDownLatch(0) // Change this value to 2 to run the test slowly
         val subscribeThreadsStillRunning = CountDownLatch(0) // Change this value to 1 to run the test slowly
 
-        val service: (String, Int, String?, Int, String, String, String, String, String, String?, String) -> Single<String> = {
-                s1: String,
-                s2: Int,
-                s3: String?,
-                s4: Int,
-                s5: String,
-                s6: String,
-                s7: String,
-                s8: String,
-                s9: String,
-                s10: String?,
-                s11: String ->
-            val result =
-                listOf(s1, "$s2", s3 ?: "none", "$s4", s5, s6, s7, s8, s9, s10 ?: "none", s11).joinToString(separator = ";")
-            Single.just("Values:$result")
-        }
+        val service: (String, Int, String?, Int, String, String, String, String, String, String?, String) -> Single<String> =
+            { s1: String,
+              s2: Int,
+              s3: String?,
+              s4: Int,
+              s5: String,
+              s6: String,
+              s7: String,
+              s8: String,
+              s9: String,
+              s10: String?,
+              s11: String ->
+                val result =
+                    listOf(s1, "$s2", s3 ?: "none", "$s4", s5, s6, s7, s8, s9, s10 ?: "none", s11).joinToString(
+                        separator = ";"
+                    )
+                Single.just("Values:$result")
+            }
 
         val createSingle = { value: String ->
             Observable
@@ -91,22 +92,24 @@ class ApplicativeTest {
         val bothSubscribed = CountDownLatch(0) // Change this value to 2 to run the test slowly
         val subscribeThreadsStillRunning = CountDownLatch(0) // Change this value to 1 to run the test slowly
 
-        val service: (String, Int, String?, Int, String, String, String, String, String, String?, String) -> Single<String> = {
-                s1: String,
-                s2: Int,
-                s3: String?,
-                s4: Int,
-                s5: String,
-                s6: String,
-                s7: String,
-                s8: String,
-                s9: String,
-                s10: String?,
-                s11: String ->
-            val result =
-                listOf(s1, "$s2", s3 ?: "none", "$s4", s5, s6, s7, s8, s9, s10 ?: "none", s11).joinToString(separator = ";")
-            Single.just("Values:$result")
-        }
+        val service: (String, Int, String?, Int, String, String, String, String, String, String?, String) -> Single<String> =
+            { s1: String,
+              s2: Int,
+              s3: String?,
+              s4: Int,
+              s5: String,
+              s6: String,
+              s7: String,
+              s8: String,
+              s9: String,
+              s10: String?,
+              s11: String ->
+                val result =
+                    listOf(s1, "$s2", s3 ?: "none", "$s4", s5, s6, s7, s8, s9, s10 ?: "none", s11).joinToString(
+                        separator = ";"
+                    )
+                Single.just("Values:$result")
+            }
 
         val createSingle = { value: String ->
             Observable
@@ -167,22 +170,24 @@ class ApplicativeTest {
         val bothSubscribed = CountDownLatch(0) // Change this value to 2 to run the test slowly
         val subscribeThreadsStillRunning = CountDownLatch(0) // Change this value to 1 to run the test slowly
 
-        val service: (String, Int, String?, Int, String, String, String, String, String, String?, String) -> Single<String> = {
-                s1: String,
-                s2: Int,
-                s3: String?,
-                s4: Int,
-                s5: String,
-                s6: String,
-                s7: String,
-                s8: String,
-                s9: String,
-                s10: String?,
-                s11: String ->
-            val result =
-                listOf(s1, "v$s2", s3 ?: "none", "v$s4", s5, s6, s7, s8, s9, s10 ?: "none", s11).joinToString(separator = ";")
-            Single.just("Values:$result")
-        }
+        val service: (String, Int, String?, Int, String, String, String, String, String, String?, String) -> Single<String> =
+            { s1: String,
+              s2: Int,
+              s3: String?,
+              s4: Int,
+              s5: String,
+              s6: String,
+              s7: String,
+              s8: String,
+              s9: String,
+              s10: String?,
+              s11: String ->
+                val result =
+                    listOf(s1, "v$s2", s3 ?: "none", "v$s4", s5, s6, s7, s8, s9, s10 ?: "none", s11).joinToString(
+                        separator = ";"
+                    )
+                Single.just("Values:$result")
+            }
 
         val createSingle = { value: String ->
             Observable

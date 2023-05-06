@@ -1,5 +1,4 @@
 import io.reactivex.Single
-import io.reactivex.functions.BiFunction
 
 /**
  * Returns a Single that is the result of applying the function inside the context (a Single in this case).
@@ -42,6 +41,13 @@ infix fun <A, B> Single<(A) -> (B)>.mapOver(applicativeValue: Single<A>): Single
  */
 infix fun <A, B> Single<(A?) -> (B)>.mapOverNullable(applicativeValue: Single<A>?): Single<B> =
     when {
-        applicativeValue != null -> this.flatMap { applicativeFunction -> applicativeValue.map { value -> applicativeFunction(value) } }
+        applicativeValue != null -> this.flatMap { applicativeFunction ->
+            applicativeValue.map { value ->
+                applicativeFunction(
+                    value
+                )
+            }
+        }
+
         else -> this.map { it(null) }
     }
